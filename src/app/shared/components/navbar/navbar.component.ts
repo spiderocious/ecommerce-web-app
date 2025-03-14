@@ -36,14 +36,6 @@ export class NavbarComponent implements OnInit {
   isLandingPage(): boolean {
     return window.location.pathname === '/welcome';
   }
-
-  // // isActive(route: string): boolean {
-  // //   return this.router.url === route || this.router.url.startsWith(route + '/');
-  // // }
-  
-  // isLandingPage(): boolean {
-  //   return this.router.url === '/landing' || this.router.url === '/auth/login' || this.router.url === '/auth/register';
-  // }
   
   toggleMobileMenu(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
