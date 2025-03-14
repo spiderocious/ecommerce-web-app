@@ -7,46 +7,42 @@
             {{ 'nav.brand' | translate }}
           </a>
         </div>
+        
+        <!-- Desktop Menu -->
         <div *ngIf="!isLandingPage()" class="hidden sm:ml-6 sm:flex sm:space-x-8">
-          <a routerLink="/"
-             class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
-             [class.border-primary]="isActive('/')"
+          <a routerLink="/" class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
+             [class.border-primary]="isActive('/')" 
              [class.border-transparent]="!isActive('/')">
             {{ 'nav.home' | translate }}
           </a>
           
           <!-- Admin Links -->
           <ng-container *ngIf="user?.role === 'admin'">
-            <a routerLink="/admin/dashboard"
-               class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
+            <a routerLink="/admin/dashboard" class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
                [class.border-primary]="isActive('/admin/dashboard')"
                [class.border-transparent]="!isActive('/admin/dashboard')">
               {{ 'nav.dashboard' | translate }}
             </a>
-            <a routerLink="/admin/products"
-               class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
+            <a routerLink="/admin/products" class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
                [class.border-primary]="isActive('/admin/products')"
                [class.border-transparent]="!isActive('/admin/products')">
               {{ 'nav.manageProducts' | translate }}
             </a>
-            <a routerLink="/admin/discounts"
-               class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
+            <a routerLink="/admin/discounts" class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
                [class.border-primary]="isActive('/admin/discounts')"
                [class.border-transparent]="!isActive('/admin/discounts')">
               {{ 'nav.discounts' | translate }}
             </a>
           </ng-container>
-
+          
           <!-- Customer Links -->
           <ng-container *ngIf="user?.role === 'customer'">
-            <a routerLink="/marketplace/products"
-               class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
+            <a routerLink="/marketplace/products" class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
                [class.border-primary]="isActive('/marketplace/products')"
                [class.border-transparent]="!isActive('/marketplace/products')">
               {{ 'nav.products' | translate }}
             </a>
-            <a routerLink="/marketplace/cart"
-               class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
+            <a routerLink="/marketplace/cart" class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
                [class.border-primary]="isActive('/marketplace/cart')"
                [class.border-transparent]="!isActive('/marketplace/cart')">
               {{ 'nav.cart' | translate }}
@@ -54,8 +50,79 @@
           </ng-container>
         </div>
       </div>
+      
       <div class="flex items-center">
         <app-language-switcher />
+        
+        <!-- Mobile menu button -->
+        <button *ngIf="!isLandingPage()" (click)="toggleMobileMenu()" type="button" 
+                class="sm:hidden ml-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-primary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+          <span class="sr-only">Open main menu</span>
+          <!-- Icon when menu is closed -->
+          <svg *ngIf="!isMobileMenuOpen" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- Icon when menu is open -->
+          <svg *ngIf="isMobileMenuOpen" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile menu, show/hide based on menu state -->
+    <div *ngIf="!isLandingPage() && isMobileMenuOpen" class="sm:hidden">
+      <div class="pt-2 pb-3 space-y-1">
+        <a routerLink="/" class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+           [class.border-primary]="isActive('/')" 
+           [class.text-primary]="isActive('/')"
+           [class.border-transparent]="!isActive('/')"
+           [class.text-gray-600]="!isActive('/')">
+          {{ 'nav.home' | translate }}
+        </a>
+        
+        <!-- Admin Links -->
+        <ng-container *ngIf="user?.role === 'admin'">
+          <a routerLink="/admin/dashboard" class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+             [class.border-primary]="isActive('/admin/dashboard')"
+             [class.text-primary]="isActive('/admin/dashboard')"
+             [class.border-transparent]="!isActive('/admin/dashboard')"
+             [class.text-gray-600]="!isActive('/admin/dashboard')">
+            {{ 'nav.dashboard' | translate }}
+          </a>
+          <a routerLink="/admin/products" class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+             [class.border-primary]="isActive('/admin/products')"
+             [class.text-primary]="isActive('/admin/products')"
+             [class.border-transparent]="!isActive('/admin/products')"
+             [class.text-gray-600]="!isActive('/admin/products')">
+            {{ 'nav.manageProducts' | translate }}
+          </a>
+          <a routerLink="/admin/discounts" class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+             [class.border-primary]="isActive('/admin/discounts')"
+             [class.text-primary]="isActive('/admin/discounts')"
+             [class.border-transparent]="!isActive('/admin/discounts')"
+             [class.text-gray-600]="!isActive('/admin/discounts')">
+            {{ 'nav.discounts' | translate }}
+          </a>
+        </ng-container>
+        
+        <!-- Customer Links -->
+        <ng-container *ngIf="user?.role === 'customer'">
+          <a routerLink="/marketplace/products" class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+             [class.border-primary]="isActive('/marketplace/products')"
+             [class.text-primary]="isActive('/marketplace/products')"
+             [class.border-transparent]="!isActive('/marketplace/products')"
+             [class.text-gray-600]="!isActive('/marketplace/products')">
+            {{ 'nav.products' | translate }}
+          </a>
+          <a routerLink="/marketplace/cart" class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+             [class.border-primary]="isActive('/marketplace/cart')"
+             [class.text-primary]="isActive('/marketplace/cart')"
+             [class.border-transparent]="!isActive('/marketplace/cart')"
+             [class.text-gray-600]="!isActive('/marketplace/cart')">
+            {{ 'nav.cart' | translate }}
+          </a>
+        </ng-container>
       </div>
     </div>
   </div>
