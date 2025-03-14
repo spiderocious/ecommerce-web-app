@@ -1,0 +1,201 @@
+{
+  "welcome": {
+    "title": "ברוכים הבאים לפלטפורמת המסחר שלנו",
+    "subtitle": "מה תרצו לעשות היום?",
+    "shop": {
+      "title": "הזמן מוצרים",
+      "description": "עיין בשוק שלנו וגלה מוצרים מדהימים"
+    },
+    "admin": {
+      "title": "נהל את המוצרים שלי",
+      "description": "גש ללוח הבקרה שלך כדי לנהל מוצרים והזמנות"
+    }
+  },
+  "common": {
+    "loading": "טוען...",
+    "error": "אירעה שגיאה",
+    "success": "הצלחה!",
+    "save": "שמור",
+    "cancel": "בטל",
+    "delete": "מחק",
+    "edit": "ערוך",
+    "create": "צור",
+    "search": "חיפוש",
+    "previous": "הקודם",
+    "next": "הבא"
+  },
+  "nav": {
+    "brand": "אי-קומרס",
+    "home": "בית",
+    "dashboard": "לוח בקרה",
+    "manageProducts": "ניהול מוצרים",
+    "products": "מוצרים",
+    "cart": "עגלה",
+    "discounts": "הנחות",
+    "success": "הצלחה!",
+    "save": "שמור",
+    "cancel": "בטל",
+    "delete": "מחק",
+    "edit": "ערוך",
+    "create": "צור",
+    "search": "חיפוש"
+  },
+  "discounts": {
+    "title": "ניהול הנחות",
+    "createNew": "צור הנחה חדשה",
+    "addNew": "הוסף הנחה חדשה",
+    "edit": "ערוך הנחה",
+    "form": {
+      "code": "קוד",
+      "percentage": "אחוז",
+      "validUntil": "בתוקף עד",
+      "create": "צור הנחה",
+      "usageLimit": "מגבלת שימוש (אופציונלי)",
+      "codeRequired": "נדרש קוד",
+      "codeExists": "קוד זה כבר קיים",
+      "percentageError": "האחוז חייב להיות בין 1 ל-100",
+      "percentageRequired": "נדרש אחוז",
+      "dateError": "התאריך לא יכול להיות בעבר",
+      "dateRequired": "נדרש תאריך",
+      "usageLimitError": "מגבלת השימוש חייבת להיות חיובית"
+    },
+    "off": "הנחה",
+    "validUntil": "בתוקף עד",
+    "activate": "הפעל",
+    "deactivate": "בטל",
+    "usage": "שימוש",
+    "created": "נוצר"
+  },
+  "marketplace": {
+    "cart": {
+      "itemAdded": "פריט נוסף לעגלה",
+      "itemRemoved": "פריט הוסר מהעגלה",
+      "quantityUpdated": "הכמות עודכנה",
+      "cleared": "העגלה רוקנה",
+      "title": "עגלת קניות",
+      "empty": "העגלה שלך ריקה",
+      "subtotal": "סכום ביניים",
+      "total": "סה״כ",
+      "shipping": "משלוח",
+      "free": "חינם",
+      "checkout": "המשך לתשלום",
+      "clearCart": "רוקן עגלה",
+      "discount": {
+        "apply": "החל קוד הנחה",
+        "code": "קוד הנחה",
+        "invalid": "קוד הנחה לא תקין",
+        "expired": "קוד הנחה פג תוקף",
+        "applied": "ההנחה הוחלה",
+        "remove": "הסר הנחה"
+      },
+      "item": {
+        "quantity": "כמות",
+        "remove": "הסר",
+        "subtotal": "סכום ביניים"
+      }
+    },
+    "checkout": {
+      "title": "תשלום",
+      "shipping": {
+        "title": "פרטי משלוח",
+        "name": "שם מלא",
+        "email": "דואר אלקטרוני",
+        "phone": "טלפון",
+        "address": "כתובת",
+        "city": "עיר",
+        "state": "מדינה",
+        "zip": "מיקוד",
+        "country": "ארץ"
+      },
+      "payment": {
+        "title": "אמצעי תשלום",
+        "card": "כרטיס אשראי",
+        "cardNumber": "מספר כרטיס",
+        "expiryDate": "תוקף",
+        "cvv": "קוד אבטחה",
+        "nameOnCard": "שם על הכרטיס"
+      },
+      "summary": {
+        "title": "סיכום הזמנה",
+        "items": "פריטים",
+        "shipping": "משלוח",
+        "discount": "הנחה",
+        "total": "סה״כ",
+        "free": "חינם"
+      },
+      "terms": {
+        "text": "אני מסכים לתנאי השימוש",
+        "error": "יש לאשר את תנאי השימוש"
+      },
+      "validation": {
+        "required": "שדה חובה",
+        "email": "נא להזין כתובת דואר אלקטרוני תקינה",
+        "phone": "נא להזין מספר טלפון תקין",
+        "cardNumber": "נא להזין מספר כרטיס תקין",
+        "expiryDate": "נא להזין תאריך תפוגה תקין",
+        "cvv": "נא להזין קוד אבטחה תקין"
+      }
+    },
+    "products": {
+      "title": "המוצרים שלנו",
+      "search": "חיפוש מוצרים...",
+      "filters": {
+        "category": "קטגוריה",
+        "priceRange": "טווח מחירים",
+        "sortBy": "מיין לפי",
+        "all": "כל הקטגוריות",
+        "gaming": "גיימינג",
+        "accessories": "אביזרים",
+        "audio": "אודיו"
+      },
+      "sort": {
+        "nameAsc": "שם (א-ת)",
+        "nameDesc": "שם (ת-א)",
+        "priceLow": "מחיר (מהנמוך לגבוה)",
+        "priceHigh": "מחיר (מהגבוה לנמוך)"
+      },
+      "addToCart": "הוסף לעגלה",
+      "inCart": "בעגלה",
+      "viewDetails": "צפה בפרטים",
+      "outOfStock": "אזל מהמלאי",
+      "quantity": "כמות",
+      "related": "מוצרים קשורים",
+      "details": {
+        "description": "תיאור",
+        "inStock": "במלאי",
+        "outOfStock": "אזל מהמלאי",
+        "addToCart": "הוסף לעגלה",
+        "backToCatalog": "חזרה לקטלוג",
+        "relatedProducts": "אולי יעניין אותך גם"
+      }
+    }
+  },
+  "products": {
+    "management": {
+      "title": "ניהול מוצרים",
+      "addNew": "הוסף מוצר חדש",
+      "search": "חיפוש מוצרים...",
+      "stockAll": "כל רמות המלאי",
+      "stockLow": "מלאי נמוך",
+      "stockOut": "אזל מהמלאי",
+      "sortName": "מיון לפי שם",
+      "sortPrice": "מיון לפי מחיר",
+      "sortStock": "מיון לפי מלאי",
+      "sortAsc": "סדר עולה",
+      "sortDesc": "סדר יורד",
+      "edit": "ערוך מוצר",
+      "create": "צור מוצר",
+      "outOfStock": "אזל מהמלאי",
+      "lowStock": "מלאי נמוך",
+      "stock": "מלאי",
+      "history": "היסטוריית מלאי",
+      "form": {
+        "name": "שם המוצר",
+        "price": "מחיר",
+        "stock": "כמות במלאי",
+        "image": "כתובת תמונה",
+        "description": "תיאור"
+      }
+    }
+  }
+}

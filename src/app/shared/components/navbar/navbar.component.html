@@ -1,0 +1,62 @@
+<nav class="bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      <div class="flex">
+        <div class="flex-shrink-0 flex items-center">
+          <a routerLink="/" class="text-xl font-bold text-primary">
+            {{ 'nav.brand' | translate }}
+          </a>
+        </div>
+        <div *ngIf="!isLandingPage()" class="hidden sm:ml-6 sm:flex sm:space-x-8">
+          <a routerLink="/"
+             class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
+             [class.border-primary]="isActive('/')"
+             [class.border-transparent]="!isActive('/')">
+            {{ 'nav.home' | translate }}
+          </a>
+          
+          <!-- Admin Links -->
+          <ng-container *ngIf="user?.role === 'admin'">
+            <a routerLink="/admin/dashboard"
+               class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
+               [class.border-primary]="isActive('/admin/dashboard')"
+               [class.border-transparent]="!isActive('/admin/dashboard')">
+              {{ 'nav.dashboard' | translate }}
+            </a>
+            <a routerLink="/admin/products"
+               class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
+               [class.border-primary]="isActive('/admin/products')"
+               [class.border-transparent]="!isActive('/admin/products')">
+              {{ 'nav.manageProducts' | translate }}
+            </a>
+            <a routerLink="/admin/discounts"
+               class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
+               [class.border-primary]="isActive('/admin/discounts')"
+               [class.border-transparent]="!isActive('/admin/discounts')">
+              {{ 'nav.discounts' | translate }}
+            </a>
+          </ng-container>
+
+          <!-- Customer Links -->
+          <ng-container *ngIf="user?.role === 'customer'">
+            <a routerLink="/marketplace/products"
+               class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
+               [class.border-primary]="isActive('/marketplace/products')"
+               [class.border-transparent]="!isActive('/marketplace/products')">
+              {{ 'nav.products' | translate }}
+            </a>
+            <a routerLink="/marketplace/cart"
+               class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2"
+               [class.border-primary]="isActive('/marketplace/cart')"
+               [class.border-transparent]="!isActive('/marketplace/cart')">
+              {{ 'nav.cart' | translate }}
+            </a>
+          </ng-container>
+        </div>
+      </div>
+      <div class="flex items-center">
+        <app-language-switcher />
+      </div>
+    </div>
+  </div>
+</nav>

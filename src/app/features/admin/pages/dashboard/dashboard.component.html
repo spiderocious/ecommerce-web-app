@@ -1,0 +1,34 @@
+<div class="p-6">
+  <h1 class="text-2xl font-bold mb-6">Welcome back, {{userName}}!</h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <!-- Metrics -->
+    <app-card>
+      <h2 class="text-lg font-semibold">Total Products</h2>
+      <p class="text-3xl font-bold text-primary mt-2">{{metrics.totalProducts}}</p>
+    </app-card>
+    <app-card>
+      <h2 class="text-lg font-semibold">Low Stock Items</h2>
+      <p class="text-3xl font-bold text-warning mt-2">{{metrics.lowStockItems}}</p>
+    </app-card>
+    <app-card>
+      <h2 class="text-lg font-semibold">Active Discounts</h2>
+      <p class="text-3xl font-bold text-success mt-2">{{metrics.activeDiscounts}}</p>
+    </app-card>
+  </div>
+  
+  <!-- Low Stock Alerts -->
+  <div class="mt-8">
+    <h2 class="text-xl font-semibold mb-4">Low Stock Alerts</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <app-card *ngFor="let item of lowStockItems" [class.bg-warning]="item.stock <= 3">
+        <div class="flex items-center gap-4">
+          <img [src]="item.image" [alt]="item.name" class="w-16 h-16 object-cover rounded">
+          <div>
+            <h3 class="font-semibold">{{item.name}}</h3>
+            <p class="text-sm text-gray-600">Stock: {{item.stock}} units</p>
+          </div>
+        </div>
+      </app-card>
+    </div>
+  </div>
+</div>

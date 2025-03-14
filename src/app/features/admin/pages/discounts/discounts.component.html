@@ -1,0 +1,118 @@
+<div class="p-6" @fadeIn>
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold">{{ 'discounts.title' | translate }}</h1>
+    <app-button *ngIf="!showForm" (click)="showCreateForm()">
+      {{ 'discounts.addNew' | translate }}
+    </app-button>
+  </div>
+  
+  <!-- Create/Edit Discount Form -->
+  <app-card *ngIf="showForm" class="mb-8" @slideIn>
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-semibold">
+        {{ (editingDiscount ? 'discounts.edit' : 'discounts.createNew') | translate }}
+      </h2>
+      <app-button variant="outline" (click)="hideForm()">
+        {{ 'common.cancel' | translate }}
+      </app-button>
+    </div>
+    <form [formGroup]="discountForm" (ngSubmit)="onSubmit()" class="space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">{{ 'discounts.form.code' | translate }}</label>
+          <input type="text" formControlName="code"
+                 (input)="validateField('code')"
+                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                 [class.border-error]="validationErrors.code">
+          <div *ngIf="validationErrors.code" 
+               class="text-error text-sm mt-1">
+            {{ validationErrors.code | translate }}
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">{{ 'discounts.form.percentage' | translate }}</label>
+          <input type="number" formControlName="percentage"
+                 (input)="validateField('percentage')"
+                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                 [class.border-error]="validationErrors.percentage">
+          <div *ngIf="validationErrors.percentage" 
+               class="text-error text-sm mt-1">
+            {{ validationErrors.percentage | translate }}
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">{{ 'discounts.form.validUntil' | translate }}</label>
+          <input type="date" formControlName="validUntil"
+                 (input)="validateField('validUntil')"
+                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                 [class.border-error]="validationErrors.validUntil">
+          <div *ngIf="validationErrors.validUntil" 
+               class="text-error text-sm mt-1">
+            {{ validationErrors.validUntil | translate }}
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">{{ 'discounts.form.usageLimit' | translate }}</label>
+          <input type="number" formControlName="usageLimit"
+                 (input)="validateField('usageLimit')"
+                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                 [class.border-error]="validationErrors.usageLimit">
+          <div *ngIf="validationErrors.usageLimit" 
+               class="text-error text-sm mt-1">
+            {{ validationErrors.usageLimit | translate }}
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2">
+        <app-button type="submit" [disabled]="!isFormValid">
+          {{ (editingDiscount ? 'common.save' : 'discounts.form.create') | translate }}
+        </app-button>
+      </div>
+    </form>
+  </app-card>
+
+  <!-- Discounts List -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <app-card *ngFor="let discount of discounts" @cardAnimation>
+      <div class="flex flex-col gap-4">
+        <div class="flex justify-between items-start">
+          <div>
+            <h3 class="font-semibold">{{discount.code}}</h3>
+            <p class="text-sm text-gray-600">{{discount.percentage}}% {{ 'discounts.off' | translate }}</p>
+            <p class="text-sm text-gray-600">
+              {{ 'discounts.validUntil' | translate }}: {{discount.validUntil | date}}
+            </p>
+          </div>
+          <div class="space-x-2">
+            <app-button variant="outline" size="sm" (click)="editDiscount(discount)">
+              {{ 'common.edit' | translate }}
+            </app-button>
+            <app-button variant="outline" size="sm" (click)="toggleDiscount(discount)">
+              {{discount.isActive ? ('discounts.deactivate' | translate) : ('discounts.activate' | translate)}}
+            </app-button>
+          </div>
+        </div>
+        
+        <!-- Usage Statistics -->
+        <div class="mt-2 p-3 bg-gray-50 rounded-md">
+          <div class="flex justify-between text-sm">
+            <span>{{ 'discounts.usage' | translate }}</span>
+            <span>{{discount.usageCount}} / {{discount.usageLimit || '∞'}}</span>
+          </div>
+          <div class="mt-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div class="h-full bg-primary transition-all"
+                 [style.width]="getUsagePercentage(discount) + '%'">
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center text-sm text-gray-500">
+          <span>{{ 'discounts.created' | translate }}: {{discount.createdAt | date}}</span>
+          <app-button variant="outline" size="sm" (click)="deleteDiscount(discount.id)">
+            {{ 'common.delete' | translate }}
+          </app-button>
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>

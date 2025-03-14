@@ -1,0 +1,201 @@
+{
+  "welcome": {
+    "title": "Welcome to Our E-commerce Platform",
+    "subtitle": "What would you like to do today?",
+    "shop": {
+      "title": "Order Some Products",
+      "description": "Browse our marketplace and discover amazing products"
+    },
+    "admin": {
+      "title": "Manage My Products",
+      "description": "Access your admin dashboard to manage products and orders"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success!",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "nav": {
+    "brand": "E-Commerce",
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "manageProducts": "Manage Products",
+    "products": "Products",
+    "cart": "Cart",
+    "discounts": "Discounts",
+    "success": "Success!",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search"
+  },
+  "discounts": {
+    "title": "Discount Management",
+    "createNew": "Create New Discount",
+    "addNew": "Add New Discount",
+    "edit": "Edit Discount",
+    "form": {
+      "code": "Code",
+      "percentage": "Percentage",
+      "validUntil": "Valid Until",
+      "create": "Create Discount",
+      "usageLimit": "Usage Limit (Optional)",
+      "codeRequired": "Code is required",
+      "codeExists": "This code already exists",
+      "percentageError": "Percentage must be between 1 and 100",
+      "percentageRequired": "Percentage is required",
+      "dateError": "Date cannot be in the past",
+      "dateRequired": "Date is required",
+      "usageLimitError": "Usage limit must be positive"
+    },
+    "off": "off",
+    "validUntil": "Valid until",
+    "activate": "Activate",
+    "deactivate": "Deactivate",
+    "usage": "Usage",
+    "created": "Created"
+  },
+  "marketplace": {
+    "cart": {
+      "itemAdded": "Item added to cart",
+      "itemRemoved": "Item removed from cart",
+      "quantityUpdated": "Quantity updated",
+      "cleared": "Cart cleared",
+      "title": "Shopping Cart",
+      "empty": "Your cart is empty",
+      "subtotal": "Subtotal",
+      "total": "Total",
+      "shipping": "Shipping",
+      "free": "Free",
+      "checkout": "Proceed to Checkout",
+      "clearCart": "Clear Cart",
+      "discount": {
+        "apply": "Apply Discount",
+        "code": "Discount Code",
+        "invalid": "Invalid discount code",
+        "expired": "Discount code has expired",
+        "applied": "Discount applied",
+        "remove": "Remove Discount"
+      },
+      "item": {
+        "quantity": "Quantity",
+        "remove": "Remove",
+        "subtotal": "Subtotal"
+      }
+    },
+    "checkout": {
+      "title": "Checkout",
+      "shipping": {
+        "title": "Shipping Information",
+        "name": "Full Name",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address",
+        "city": "City",
+        "state": "State",
+        "zip": "ZIP Code",
+        "country": "Country"
+      },
+      "payment": {
+        "title": "Payment Method",
+        "card": "Credit Card",
+        "cardNumber": "Card Number",
+        "expiryDate": "Expiry Date",
+        "cvv": "CVV",
+        "nameOnCard": "Name on Card"
+      },
+      "summary": {
+        "title": "Order Summary",
+        "items": "Items",
+        "shipping": "Shipping",
+        "discount": "Discount",
+        "total": "Total",
+        "free": "Free"
+      },
+      "terms": {
+        "text": "I agree to the Terms and Conditions",
+        "error": "You must accept the terms and conditions"
+      },
+      "validation": {
+        "required": "This field is required",
+        "email": "Please enter a valid email",
+        "phone": "Please enter a valid phone number",
+        "cardNumber": "Please enter a valid card number",
+        "expiryDate": "Please enter a valid expiry date",
+        "cvv": "Please enter a valid CVV"
+      }
+    },
+    "products": {
+      "title": "Our Products",
+      "search": "Search products...",
+      "filters": {
+        "category": "Category",
+        "priceRange": "Price Range",
+        "sortBy": "Sort By",
+        "all": "All Categories",
+        "gaming": "Gaming",
+        "accessories": "Accessories",
+        "audio": "Audio"
+      },
+      "sort": {
+        "nameAsc": "Name (A-Z)",
+        "nameDesc": "Name (Z-A)",
+        "priceLow": "Price (Low to High)",
+        "priceHigh": "Price (High to Low)"
+      },
+      "addToCart": "Add to Cart",
+      "inCart": "In Cart",
+      "viewDetails": "View Details",
+      "outOfStock": "Out of Stock",
+      "quantity": "Quantity",
+      "related": "Related Products",
+      "details": {
+        "description": "Description",
+        "inStock": "In Stock",
+        "outOfStock": "Out of Stock",
+        "addToCart": "Add to Cart",
+        "backToCatalog": "Back to Catalog",
+        "relatedProducts": "You might also like"
+      }
+    }
+  },
+  "products": {
+    "management": {
+      "title": "Product Management",
+      "addNew": "Add New Product",
+      "search": "Search products...",
+      "stockAll": "All Stock Levels",
+      "stockLow": "Low Stock",
+      "stockOut": "Out of Stock",
+      "sortName": "Sort by Name",
+      "sortPrice": "Sort by Price",
+      "sortStock": "Sort by Stock",
+      "sortAsc": "Ascending",
+      "sortDesc": "Descending",
+      "edit": "Edit Product",
+      "create": "Create Product",
+      "outOfStock": "Out of Stock",
+      "lowStock": "Low Stock",
+      "stock": "Stock",
+      "history": "Inventory History",
+      "form": {
+        "name": "Product Name",
+        "price": "Price",
+        "stock": "Stock Quantity",
+        "image": "Image URL",
+        "description": "Description"
+      }
+    }
+  }
+}

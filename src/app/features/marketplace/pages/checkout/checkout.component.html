@@ -1,0 +1,217 @@
+<div class="p-6" @fadeIn>
+  <h1 class="text-2xl font-bold mb-6">{{ 'marketplace.checkout.title' | translate }}</h1>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Shipping Information -->
+    <div class="lg:col-span-2">
+      <app-card class="mb-6" @slideIn>
+        <h2 class="text-xl font-semibold mb-4">
+          {{ 'marketplace.checkout.shipping.title' | translate }}
+        </h2>
+        <form [formGroup]="shippingForm" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                {{ 'marketplace.checkout.shipping.name' | translate }}
+              </label>
+              <input type="text" formControlName="name"
+                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+              <p *ngIf="getFieldError(shippingForm, 'name')" 
+                 class="mt-1 text-sm text-error">
+                {{ getFieldError(shippingForm, 'name') | translate }}
+              </p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                {{ 'marketplace.checkout.shipping.email' | translate }}
+              </label>
+              <input type="email" formControlName="email"
+                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+              <p *ngIf="getFieldError(shippingForm, 'email')" 
+                 class="mt-1 text-sm text-error">
+                {{ getFieldError(shippingForm, 'email') | translate }}
+              </p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                {{ 'marketplace.checkout.shipping.phone' | translate }}
+              </label>
+              <input type="tel" formControlName="phone"
+                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+              <p *ngIf="getFieldError(shippingForm, 'phone')" 
+                 class="mt-1 text-sm text-error">
+                {{ getFieldError(shippingForm, 'phone') | translate }}
+              </p>
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-sm font-medium text-gray-700">
+                {{ 'marketplace.checkout.shipping.address' | translate }}
+              </label>
+              <input type="text" formControlName="address"
+                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+              <p *ngIf="getFieldError(shippingForm, 'address')" 
+                 class="mt-1 text-sm text-error">
+                {{ getFieldError(shippingForm, 'address') | translate }}
+              </p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                {{ 'marketplace.checkout.shipping.city' | translate }}
+              </label>
+              <input type="text" formControlName="city"
+                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+              <p *ngIf="getFieldError(shippingForm, 'city')" 
+                 class="mt-1 text-sm text-error">
+                {{ getFieldError(shippingForm, 'city') | translate }}
+              </p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                {{ 'marketplace.checkout.shipping.state' | translate }}
+              </label>
+              <input type="text" formControlName="state"
+                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+              <p *ngIf="getFieldError(shippingForm, 'state')" 
+                 class="mt-1 text-sm text-error">
+                {{ getFieldError(shippingForm, 'state') | translate }}
+              </p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                {{ 'marketplace.checkout.shipping.zip' | translate }}
+              </label>
+              <input type="text" formControlName="zip"
+                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+              <p *ngIf="getFieldError(shippingForm, 'zip')" 
+                 class="mt-1 text-sm text-error">
+                {{ getFieldError(shippingForm, 'zip') | translate }}
+              </p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                {{ 'marketplace.checkout.shipping.country' | translate }}
+              </label>
+              <input type="text" formControlName="country"
+                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+              <p *ngIf="getFieldError(shippingForm, 'country')" 
+                 class="mt-1 text-sm text-error">
+                {{ getFieldError(shippingForm, 'country') | translate }}
+              </p>
+            </div>
+          </div>
+        </form>
+      </app-card>
+
+      <!-- Payment Information -->
+      <app-card @slideIn>
+        <h2 class="text-xl font-semibold mb-4">
+          {{ 'marketplace.checkout.payment.title' | translate }}
+        </h2>
+        <form [formGroup]="paymentForm" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="md:col-span-2">
+              <label class="block text-sm font-medium text-gray-700">
+                {{ 'marketplace.checkout.payment.cardNumber' | translate }}
+              </label>
+              <input type="text" formControlName="cardNumber"
+                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+              <p *ngIf="getFieldError(paymentForm, 'cardNumber')" 
+                 class="mt-1 text-sm text-error">
+                {{ getFieldError(paymentForm, 'cardNumber') | translate }}
+              </p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                {{ 'marketplace.checkout.payment.expiryDate' | translate }}
+              </label>
+              <input type="text" formControlName="expiryDate"
+                     placeholder="MM/YY"
+                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+              <p *ngIf="getFieldError(paymentForm, 'expiryDate')" 
+                 class="mt-1 text-sm text-error">
+                {{ getFieldError(paymentForm, 'expiryDate') | translate }}
+              </p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                {{ 'marketplace.checkout.payment.cvv' | translate }}
+              </label>
+              <input type="text" formControlName="cvv"
+                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+              <p *ngIf="getFieldError(paymentForm, 'cvv')" 
+                 class="mt-1 text-sm text-error">
+                {{ getFieldError(paymentForm, 'cvv') | translate }}
+              </p>
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-sm font-medium text-gray-700">
+                {{ 'marketplace.checkout.payment.nameOnCard' | translate }}
+              </label>
+              <input type="text" formControlName="nameOnCard"
+                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+              <p *ngIf="getFieldError(paymentForm, 'nameOnCard')" 
+                 class="mt-1 text-sm text-error">
+                {{ getFieldError(paymentForm, 'nameOnCard') | translate }}
+              </p>
+            </div>
+          </div>
+        </form>
+      </app-card>
+    </div>
+
+    <!-- Order Summary -->
+    <div>
+      <app-card @slideIn>
+        <h2 class="text-xl font-semibold mb-4">
+          {{ 'marketplace.checkout.summary.title' | translate }}
+        </h2>
+        
+        <div class="space-y-4">
+          <div class="flex justify-between">
+            <span>{{ 'marketplace.checkout.summary.items' | translate }}</span>
+            <span>{{subtotal | currency}}</span>
+          </div>
+          <div class="flex justify-between">
+            <span>{{ 'marketplace.checkout.summary.shipping' | translate }}</span>
+            <span>{{ 'marketplace.checkout.summary.free' | translate }}</span>
+          </div>
+          <div *ngIf="discount > 0" class="flex justify-between text-success">
+            <span>{{ 'marketplace.checkout.summary.discount' | translate }}</span>
+            <span>-{{discount | currency}}</span>
+          </div>
+          
+          <hr>
+          
+          <div class="flex justify-between text-lg font-semibold">
+            <span>{{ 'marketplace.checkout.summary.total' | translate }}</span>
+            <span>{{total | currency}}</span>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <label class="flex items-center gap-2">
+            <input type="checkbox" 
+                   [(ngModel)]="acceptedTerms"
+                   (change)="showTermsError = false"
+                   class="rounded border-gray-300">
+            <span class="text-sm">
+              {{ 'marketplace.checkout.terms.text' | translate }}
+            </span>
+          </label>
+          <p *ngIf="showTermsError" class="mt-1 text-sm text-error">
+            {{ 'marketplace.checkout.terms.error' | translate }}
+          </p>
+        </div>
+
+        <div class="mt-6 space-y-2">
+          <app-button class="w-full" (click)="placeOrder()">
+            {{ 'marketplace.cart.checkout' | translate }}
+          </app-button>
+          <app-button variant="outline" class="w-full" routerLink="/marketplace/cart">
+            {{ 'marketplace.products.details.backToCatalog' | translate }}
+          </app-button>
+        </div>
+      </app-card>
+    </div>
+  </div>
+</div>

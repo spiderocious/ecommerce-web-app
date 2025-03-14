@@ -1,0 +1,85 @@
+<div class="p-6" @fadeIn>
+  <div *ngIf="product" class="max-w-7xl mx-auto">
+    <!-- Back Button -->
+    <app-button variant="outline" routerLink="/marketplace/products" class="mb-6">
+      {{ 'marketplace.products.details.backToCatalog' | translate }}
+    </app-button>
+
+    <!-- Product Details -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      <!-- Product Image -->
+      <div class="relative" @slideIn>
+        <img [src]="product.image" [alt]="product.name" 
+             class="w-full rounded-lg shadow-lg object-cover">
+        <div *ngIf="product.stock === 0" 
+             class="absolute top-4 right-4 px-3 py-1 bg-error text-white rounded-full text-sm">
+          {{ 'marketplace.products.details.outOfStock' | translate }}
+        </div>
+      </div>
+
+      <!-- Product Info -->
+      <div class="space-y-6" @slideIn>
+        <h1 class="text-3xl font-bold">{{product.name}}</h1>
+        <p class="text-2xl text-primary">{{product.price | currency}}</p>
+        
+        <div>
+          <h2 class="text-lg font-semibold mb-2">
+            {{ 'marketplace.products.details.description' | translate }}
+          </h2>
+          <p class="text-gray-600">{{product.description}}</p>
+        </div>
+
+        <div class="flex items-center space-x-2">
+          <span class="font-medium">
+            {{ product.stock > 0 ? 
+               ('marketplace.products.details.inStock' | translate) : 
+               ('marketplace.products.details.outOfStock' | translate) }}
+          </span>
+          <span *ngIf="product.stock > 0" class="text-success">
+            ({{product.stock}})
+          </span>
+        </div>
+
+        <!-- Quantity Selector -->
+        <div *ngIf="product.stock > 0" class="flex items-center space-x-4">
+          <span>{{ 'marketplace.products.quantity' | translate }}</span>
+          <div class="flex items-center space-x-2">
+            <button class="px-3 py-1 border rounded-md" 
+                    (click)="updateQuantity(quantity - 1)">-</button>
+            <input type="number" [(ngModel)]="quantity" 
+                   (change)="updateQuantity(quantity)"
+                   class="w-16 text-center border rounded-md p-1">
+            <button class="px-3 py-1 border rounded-md"
+                    (click)="updateQuantity(quantity + 1)">+</button>
+          </div>
+        </div>
+
+        <!-- Add to Cart Button -->
+        <app-button class="w-full" 
+                   [disabled]="product.stock === 0"
+                   (click)="addToCart()">
+          {{ 'marketplace.products.details.addToCart' | translate }}
+        </app-button>
+      </div>
+    </div>
+
+    <!-- Related Products -->
+    <div *ngIf="relatedProducts.length > 0" @fadeIn>
+      <h2 class="text-2xl font-bold mb-6">
+        {{ 'marketplace.products.details.relatedProducts' | translate }}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <app-card *ngFor="let related of relatedProducts" @cardAnimation>
+          <img [src]="related.image" [alt]="related.name" 
+               class="w-full h-48 object-cover rounded mb-4">
+          <h3 class="font-semibold mb-2">{{related.name}}</h3>
+          <p class="text-gray-600 mb-4">{{related.price | currency}}</p>
+          <app-button variant="outline" class="w-full" 
+                     [routerLink]="['/marketplace/products', related.id]">
+            {{ 'marketplace.products.viewDetails' | translate }}
+          </app-button>
+        </app-card>
+      </div>
+    </div>
+  </div>
+</div>

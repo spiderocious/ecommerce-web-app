@@ -1,0 +1,108 @@
+<div class="p-6" @fadeIn>
+  <h1 class="text-2xl font-bold mb-6">{{ 'marketplace.cart.title' | translate }}</h1>
+
+  <div *ngIf="cartItems.length === 0" class="text-center py-12">
+    <p class="text-gray-600">{{ 'marketplace.cart.empty' | translate }}</p>
+  </div>
+
+  <div *ngIf="cartItems.length > 0" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Cart Items -->
+    <div class="lg:col-span-2">
+      <app-card *ngFor="let item of cartItems" class="mb-4" @cardAnimation>
+        <div class="flex gap-4">
+          <img [src]="item.image" [alt]="item.name" 
+               class="w-24 h-24 object-cover rounded">
+          <div class="flex-grow">
+            <div class="flex justify-between">
+              <h3 class="font-semibold">{{item.name}}</h3>
+              <p class="text-gray-600">{{item.price | currency}}</p>
+            </div>
+            <div class="flex items-center justify-between mt-4">
+              <div class="flex items-center gap-2">
+                <span class="text-sm">{{ 'marketplace.cart.item.quantity' | translate }}:</span>
+                <button class="px-2 py-1 border rounded" 
+                        (click)="updateQuantity(item, item.quantity - 1)">-</button>
+                <span>{{item.quantity}}</span>
+                <button class="px-2 py-1 border rounded"
+                        (click)="updateQuantity(item, item.quantity + 1)">+</button>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="text-gray-600">
+                  {{ 'marketplace.cart.item.subtotal' | translate }}: 
+                  {{item.price * item.quantity | currency}}
+                </span>
+                <app-button variant="outline" (click)="removeItem(item.id)">
+                  {{ 'marketplace.cart.item.remove' | translate }}
+                </app-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </app-card>
+    </div>
+
+    <!-- Order Summary -->
+    <app-card @slideIn>
+      <h2 class="text-xl font-semibold mb-4">{{ 'marketplace.cart.title' | translate }}</h2>
+      
+      <!-- Discount Code -->
+      <div class="mb-4">
+        <div class="flex gap-2">
+          <input type="text" 
+                 [(ngModel)]="discountCode"
+                 [placeholder]="'marketplace.cart.discount.code' | translate"
+                 class="flex-grow p-2 border rounded">
+          <app-button (click)="applyDiscount()" 
+                     [disabled]="!discountCode || !!appliedDiscount">
+            {{ 'marketplace.cart.discount.apply' | translate }}
+          </app-button>
+        </div>
+        <p *ngIf="discountError" class="text-error text-sm mt-1">
+          {{ discountError | translate }}
+        </p>
+        <div *ngIf="appliedDiscount" class="flex justify-between items-center mt-2">
+          <span class="text-success">
+            {{ 'marketplace.cart.discount.applied' | translate }} 
+            ({{appliedDiscount.percentage}}%)
+          </span>
+          <app-button variant="outline" size="sm" (click)="removeDiscount()">
+            {{ 'marketplace.cart.discount.remove' | translate }}
+          </app-button>
+        </div>
+      </div>
+
+      <!-- Totals -->
+      <div class="space-y-2 mb-4">
+        <div class="flex justify-between">
+          <span>{{ 'marketplace.cart.subtotal' | translate }}</span>
+          <span>{{subtotal | currency}}</span>
+        </div>
+        <div class="flex justify-between">
+          <span>{{ 'marketplace.cart.shipping' | translate }}</span>
+          <span>{{ 'marketplace.cart.free' | translate }}</span>
+        </div>
+        <div *ngIf="appliedDiscount" class="flex justify-between text-success">
+          <span>{{ 'discounts.off' | translate }} ({{appliedDiscount.percentage}}%)</span>
+          <span>-{{subtotal - total | currency}}</span>
+        </div>
+      </div>
+
+      <hr class="my-4">
+      
+      <div class="flex justify-between mb-6">
+        <span class="text-lg font-semibold">{{ 'marketplace.cart.total' | translate }}</span>
+        <span class="text-lg font-semibold">{{total | currency}}</span>
+      </div>
+
+      <!-- Actions -->
+      <div class="space-y-2">
+        <app-button class="w-full" (click)="checkout()">
+          {{ 'marketplace.cart.checkout' | translate }}
+        </app-button>
+        <app-button variant="outline" class="w-full" (click)="clearCart()">
+          {{ 'marketplace.cart.clearCart' | translate }}
+        </app-button>
+      </div>
+    </app-card>
+  </div>
+</div>
